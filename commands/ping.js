@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const botconfig = require("../botSettings.json");
 
 module.exports.run = (client, message, args) => {
-    return message.channel.send(`Pong ${client.ws.ping}`)
+    return message.channel.send(`Pong ${client.ws.ping}ms`)
 }
 
 module.exports.config = {

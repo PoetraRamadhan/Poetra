@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
         .setAuthor(`Successfully unBan ${bannedUser.tag}`, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQqiK692F33PbCxxcrJjTaHmIk68heDGtXbJA&usqp=CAU")
         .setColor("BLUE")
         message.guild.members.unban(bannedUser, {reason: reason})
-        message.channel.send(embed)
+        message.channel.send(embed).then(m => m.delete({ timeout: 20000 }))
     } catch (error) {
         console.log(error)
         message.channel.send(`ERROR:\n\`\`\`${error}\`\`\``)

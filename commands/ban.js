@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => {
         let embed = new Discord.MessageEmbed()
         .setAuthor(`Successfully banned ${target.user.tag}`, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQqiK692F33PbCxxcrJjTaHmIk68heDGtXbJA&usqp=CAU")
         .setColor("BLUE")
-        message.channel.send(embed)
+        message.channel.send(embed).then(m => m.delete({ timeout: 20000 }))
     } catch (err) {
         if(err) console.log(err);
     }

@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
 
     message.channel.bulkDelete(deleteAmount + 1, true)
     .catch(err => message.reply(`ERROR:\n\`\`\`${err}\`\`\``));
-    message.channel.send(embed)
+    message.channel.send(embed).then(m => m.delete({ timeout: 20000 }))
 }
 
 module.exports.config = {

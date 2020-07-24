@@ -19,6 +19,11 @@ module.exports.run = async (client, message, args) => {
         return message.reply("You cannot ban the guild owner.");
     }
 
+    if(!target.bannable) {
+        return message.reply("Coulnd't ban this member. Maybe his/her role is higher than me?")
+    }
+
+
     let reason = args.slice(1).join(" ");
     if(!reason) reason = "No reason provided."
 

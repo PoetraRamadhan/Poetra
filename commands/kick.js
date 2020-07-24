@@ -19,6 +19,10 @@ module.exports.run = async (client, message, args) => {
         return message.reply("You cannot kick the guild owner.");
     }
 
+    if(!target.kickable) {
+        return message.reply("Coulnd't kick this member. Maybe his/her role is higher than me?")
+    }
+
     let reason = args.slice(1).join(" ");
     if(!reason) reason = "No reason provided."
 

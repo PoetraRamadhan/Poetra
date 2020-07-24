@@ -49,6 +49,7 @@ module.exports.run = async (client, message, args) => {
     .addField("Bots", checkBots(message.guild), true)
     .addField("Online", checkOnlineUsers(message.guild))
     .addField("Offline", checkOfflineUsers(message.guild), true)
+    .setImage(message.guild.bannerURL())
     .setFooter("Created At:")
     .setTimestamp(message.guild.createdAt)
 

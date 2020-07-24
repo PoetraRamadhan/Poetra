@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
         .setAuthor(`${client.user.tag}`, client.user.displayAvatarURL())
         .setDescription(`For more information use the command \`*help <command>\`\nInvite me using the command \`*invite\``)
         .addField("Moderation", "`ban,kick,unban,clear`")
-        .addField("Information", "`serverinfo,userinfo,avatar`")
+        .addField("Information", "`info,serverinfo,userinfo,avatar`")
         .addField("Utilities", "`ping`")
         .setFooter("My prefix is: *")
         .setColor("PURPLE")

@@ -5,8 +5,8 @@ module.exports.run = async (client, message, args) => {
 
     const randomNumber = Math.floor(Math.random() * 100) + 1;
     let embed = new Discord.MessageEmbed()
-    .setAuthor(`Gayness`, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQDixa2k3Uy5ErFS4O0KZzTvmosdL6bbZgLDg&usqp=CAU")
-    .addField("Howgay?", `${members} Is ${randomNumber}% Gay`)
+    .setAuthor(`Gayness Generator`, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSmX3wsFJQduuQGYkA5IuwMAbluTnINl4Sxlg&usqp=CAU")
+    .setDescription(`${members} Is ${randomNumber}% Gay!`)
 
     message.channel.send(embed)
 

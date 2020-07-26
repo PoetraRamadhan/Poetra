@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
         .addField("Moderation", "`ban,kick,unban,clear`")
         .addField("Information", "`info,serverinfo,userinfo,avatar`")
         .addField("Utilities", "`ping`")
-        .addField("Fun", "`howgay`")
+        .addField("Fun", "`howgay,howcool,meme,pet`")
         .setFooter("My prefix is: *")
         .setColor("PURPLE")
 

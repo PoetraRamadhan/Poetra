@@ -5,6 +5,7 @@ module.exports.run = async (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
     .setAuthor(`${client.user.tag}'s Supports Info`, client.user.displayAvatarURL())
+    .setDescription(`Hello my friend!\nSo if you need any support, you can join my server.`)
     .addField("Official Server | Creator", `[Official Server](https://invite.gg/uniquestars) | <@728587451437940766>`)
     .setFooter(client.user.tag, client.user.displayAvatarURL())
     .setTimestamp()

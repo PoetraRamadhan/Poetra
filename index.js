@@ -43,6 +43,7 @@ client.on("message", async message => {
     if(!message.content.startsWith(prefix)) return;
     let commandFile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
     if(commandFile) commandFile.run(client, message, args)
+
 });
 
 client.login(token);

@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const randompuppy = require("random-puppy");
 
 module.exports.run = async (client, message, args) => {
-    const subReddits = ["pet", "pets", "animal"];
+    const subReddits = ["pet", "pets"];
     const random = subReddits[Math.floor(Math.random() * subReddits.length)];
     const img = await randompuppy(random);
 

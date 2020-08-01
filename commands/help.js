@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
         .setDescription(`For more information use the command \`*help <command>\`\nInvite me using the command \`*invite\``)
         .addField("🛡️__Moderation__🛡️", "`ban | kick | unban | clear`")
         .addField("📜__Information__📜", "`info | serverinfo | userinfo | avatar`")
-        .addField("🔧__Utilities__🔧", "`ping | help | invite | support`")
+        .addField("🔧__Utilities__🔧", "`ping | help | invite`")
         .addField("😂__Fun__😂", "`howgay | howcool | meme | pet | quiz | 8ball`")
         .setFooter("My prefix is: *", client.user.displayAvatarURL())
         .setColor("PURPLE")

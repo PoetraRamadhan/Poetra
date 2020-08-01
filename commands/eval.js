@@ -14,12 +14,9 @@ module.exports.run = async (client, message, args) => {
         let token = settings.token.replace(/\./g, "\.");
         let re = new RegExp(token, "g");
         evaluate = evaluate.replace(re, "*R-eD-Ac-Te-D-*");
-        let embed = new Discord.MessageEmbed()
-        .addField(`Input`, "```js\n"+code+"```")
-        .addField(`Output`, "```js\n"+evaluate+"```")
-        message.channel.send(embed)
+        message.channel.send("**INPUT:**\n```js\n"+code+"```\n**OUTPUT:**\n```js\n"+evaluate+"```")
     } catch (error) {
-        console.log(error);
+        message.channel.send("**ERROR:**\n```js\n"+error+"```")
     }
 }
 

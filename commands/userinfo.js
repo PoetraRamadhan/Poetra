@@ -67,7 +67,7 @@ module.exports.run = async (client, message, args) => {
     .setThumbnail(members.user.displayAvatarURL({ dynamic: true, format: "png" }))
     .addField("Name:", `${members.user.tag}\n[${members.user.id}]`)
     .addField("Joined At:", `${moment(members.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`)
-    .addField("Created At:", `${moment(message.author.createdAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`)
+    .addField("Created At:", `${moment(members.user.createdAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`)
     .addField("Permissions:", `${permissions.join(', ')}`)
     .addField(`Roles:`, `[${members.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).length}]\n${members.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `<@&${roles.id }>`).join(" **|** ") || "No Roles"}`)
     .addField("Status",`${status[members.user.presence.status]}`)

@@ -26,6 +26,24 @@ module.exports.run = async (client, message, args) => {
         return onlineCount;
     }
 
+    function checkIdleUsers(guild) {
+        let idleCount = 0;
+        guild.members.cache.forEach(member => {
+            if(member.user.presence.status === "idle")
+            idleCount++;
+        });
+        return idleCount;
+    }
+
+    function checkDndUsers(guild) {
+        let dndCount = 0;
+        guild.members.cache.forEach(member => {
+            if(member.user.presence.status === "dnd")
+            dndCount++;
+        })
+        return dndCount;
+    }
+
     function checkOfflineUsers(guild) {
         let offlineCount = 0;
         guild.members.cache.forEach(member => {
@@ -38,19 +56,17 @@ module.exports.run = async (client, message, args) => {
     let guildIcon = message.guild.iconURL({ dynamic: true, format: "png"});
     let serverEmbed = new Discord.MessageEmbed()
     .setAuthor(`${message.guild.name}'s Information`, message.guild.iconURL({ dynamic: true, format: "png"}))
-    .addField("Server Owner", `${message.guild.owner}\n[${message.guild.owner.id}]`, true)
-    .addField("Server Region", message.guild.region, true)
+    .addField("👑|Owner", `${message.guild.owner}\n[${message.guild.owner.id}]`, true)
+    .addField("🌐|Region", message.guild.region, true)
     .setThumbnail(guildIcon)
-    .addField("Server Name", `${message.guild.name}\n[${message.guild.id}]`)
-    .addField("Verification Level", message.guild.verificationLevel, true)
-    .addField("Total Channels", message.guild.channels.cache.size, true)
-    .addField("Total Members", message.guild.memberCount, true)
-    .addField("Total Boost", `${message.guild.premiumSubscriptionCount} Boost`)
-    .addField("Tier", `${message.guild.premiumTier} Tier`, true)
-    .addField("Users", checkMembers(message.guild))
-    .addField("Bots", checkBots(message.guild), true)
-    .addField("Online", checkOnlineUsers(message.guild))
-    .addField("Offline", checkOfflineUsers(message.guild), true)
+    .addField("🔒|Verification", message.guild.verificationLevel, true)
+    .addField("👤|Total Members", message.guild.memberCount, true)
+    .addField("#️⃣|Total Channels", message.guild.channels.cache.size, true)
+    .addField("<:Boost:739302864563994705>|Total Boost", `${message.guild.premiumSubscriptionCount} Boost (Tier ${message.guild.premiumTier})`, true)
+    .addField("<:Online:739302910932025474>|Online", `${checkOnlineUsers(message.guild)} Users`, true)
+    .addField("<:Idle:739302949532205146>|Idle", `${checkIdleUsers(message.guild)} Users`, true)
+    .addField("<:DND:739302986915774494>|DnD", `${checkDndUsers(message.guild)} Users`, true)
+    .addField("<:Invisible:739303023976775710>|Offline/invisible", `${checkOfflineUsers(message.guild)} Users`, true)
     .setImage(message.guild.bannerURL())
     .setFooter("Created At:")
     .setTimestamp(message.guild.createdAt)

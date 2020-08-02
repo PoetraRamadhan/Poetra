@@ -35,6 +35,11 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on("message", async message => {
     if(message.author.bot || message.channel.type === "dm") return;
+    if(message.mentions.users.size){
+        if(message.mentions.users.first().id == client.user.id){
+            return message.reply(`My Prefix is: \`\`${prefix}\`\``)
+        }
+    }
 
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];

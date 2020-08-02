@@ -2,25 +2,25 @@ const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
     if(!message.member.hasPermission("KICK_MEMBERS")) {
-        return message.reply("<:Fail:739301997575929976>|You do not have the permission to use this command");
+        return message.channel.send("<:Fail:739301997575929976>|You do not have the permission to use this command");
     }
 
     let target = message.mentions.members.first() || message.guild.members.cache.get(args[0])
 
     if(!target) {
-        return message.reply("<:Fail:739301997575929976>|Coulnd't find User, Please provide a User or UserID");
+        return message.channel.send("<:Fail:739301997575929976>|Coulnd't find User, Please provide a User or UserID");
     }
 
     if(target.id === message.author.id) {
-        return message.reply("<:Fail:739301997575929976>|You cannot kick yourself.");
+        return message.channel.send("<:Fail:739301997575929976>|You cannot kick yourself.");
     }
 
     if(target.id === message.guild.owner.id) {
-        return message.reply("<:Fail:739301997575929976>|You cannot kick the guild owner.");
+        return message.channel.send("<:Fail:739301997575929976>|You cannot kick the guild owner.");
     }
 
     if(!target.kickable) {
-        return message.reply("<:Fail:739301997575929976>|Coulnd't kick this member. Maybe his/her role is higher than me?")
+        return message.channel.send("<:Fail:739301997575929976>|Coulnd't kick this member. Maybe his/her role is higher than me?")
     }
 
     let reason = args.slice(1).join(" ");

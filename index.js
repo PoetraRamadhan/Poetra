@@ -15,22 +15,9 @@ require("./util/eventHandler")(client);
 const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-
-fs.readdir("./commands/", (err, files) => {
-    if(err) console.log(err);
-
-    let jsFile = files.filter(f => f.split(".").pop() === "js");
-    if(jsFile.length <= 0){
-        return console.log("[LOGS] Coulnd't find commands.")
-    }
-
-    jsFile.forEach((f, i) => {
-        let pull = require(`./commands/${f}`);
-        client.commands.set(pull.config.name, pull);
-        pull.config.aliases.forEach((alias) => {
-            client.aliases.set(alias, pull.config.name)
-        });
-    });
+client.categories = fs.readdirSync("./commands/");
+["command"].forEach((handler) => {
+    require(`./handlers/${handler}`)(client)
 });
 
 client.on("message", async message => {

@@ -10,6 +10,7 @@ const client = new Discord.Client({
 const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
+client.mongoose = require("./utils/mongoose")
 client.categories = fs.readdirSync("./commands/");
 ["command"].forEach((handler) => {
     require(`./handlers/${handler}`)(client)
@@ -29,4 +30,5 @@ fs.readdir("./events/", (err, files) => {
     });
 });
 
+client.mongoose.init();
 client.login(token);

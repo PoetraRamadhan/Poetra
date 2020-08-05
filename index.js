@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { prefix, token } = require("./botSettings.json");
+const { token } = require("./botSettings.json");
 const ascii = require("ascii-table");
 const mongoose = require("mongoose");
 

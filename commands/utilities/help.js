@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const mongoose = require("mongoose");
+const Guild = require("../../models/guild");
 
 module.exports = {
     name: "help",
@@ -8,18 +10,40 @@ module.exports = {
     aliases: [],
     category: "utilities",
     run: async (client, message, args) => {
+        const settings = await Guild.findOne({
+            guildID: message.guild.id,
+        }, (err, guild) => {
+            if(err) console.log(err);
+    
+            if(!guild) {
+                const newGuild = new Guild({
+                    _id: mongoose.Types.ObjectId(),
+                    guildID: message.guild.id,
+                    guildName: message.guild.name,
+                    prefix: process.env.PREFIX,
+                });
+    
+                newGuild.save()
+                .then(result => console.log(result))
+                .catch(err => console.log(err));
+    
+                message.channel.send(`This server wasn't in our database! but we've added it, Please re-type the command.`).then(m => m.delete({ timeout: 10000 }));
+            }
+        });
+        let prefix = settings.prefix;
+
         let helpArray = message.content.split(" ");
         let helpArgs = helpArray.slice(1);
     
         if(!helpArgs[0]) {
             let helpEmbed = new Discord.MessageEmbed()
             .setAuthor(`${client.user.tag}`, client.user.displayAvatarURL())
-            .setDescription(`For more information use the command \`*help <command>\`\nInvite me using the command \`*invite\``)
+            .setDescription(`For more information use the command \`${prefix}help <command>\`\nInvite me using the command \`${prefix}invite\``)
             .addField("🛡️__Moderation__🛡️", "`ban | kick | unban | clear`")
             .addField("📜__Information__📜", "`info | serverinfo | userinfo | avatar`")
             .addField("🔧__Utilities__🔧", "`ping | help | invite`")
             .addField("😂__Fun__😂", "`howgay | howcool | meme | pet | quiz | 8ball`")
-            .setFooter("My prefix is: *", client.user.displayAvatarURL())
+            .setFooter(`My prefix is: ${prefix}`, client.user.displayAvatarURL())
             .setColor("PURPLE")
     
             message.channel.send(helpEmbed)

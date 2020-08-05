@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const settings = require("../../botSettings.json");
+const settings = process.env.TOKEN;
 
 module.exports = {
     name: "eval",

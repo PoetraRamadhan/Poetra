@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { token } = require("./botSettings.json");
+const { config } = require("dotenv");
 const ascii = require("ascii-table");
 const mongoose = require("mongoose");
 
@@ -30,5 +30,9 @@ fs.readdir("./events/", (err, files) => {
     });
 });
 
+config({
+    path: `${__dirname}/.env`
+});
+
 client.mongoose.init();
-client.login(token);
+client.login(process.env.TOKEN);

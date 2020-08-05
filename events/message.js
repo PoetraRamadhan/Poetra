@@ -1,10 +1,10 @@
-const { prefix } = require("../botSettings.json");
-
 module.exports = async (client, message) => {
     if(message.author.bot) return;
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
     
+    let prefix = process.env.PREFIX;
+
     if (!message.member) message.member = await message.guild.fetchMember (message);
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);

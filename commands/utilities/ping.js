@@ -1,6 +1,4 @@
 const Discord = require("discord.js");
-const botconfig = require("../../botSettings.json");
-
 module.exports = {
     name: "ping",
     description: "Sends the latency info",

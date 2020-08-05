@@ -42,6 +42,7 @@ module.exports = {
             .addField("🛡️__Moderation__🛡️", "`ban | kick | unban | clear`")
             .addField("📜__Information__📜", "`info | serverinfo | userinfo | avatar`")
             .addField("🔧__Utilities__🔧", "`ping | help | invite`")
+            .addField("⚙️__Configuration__⚙️", "`setprefix`")
             .addField("😂__Fun__😂", "`howgay | howcool | meme | pet | quiz | 8ball`")
             .setFooter(`My prefix is: ${prefix}`, client.user.displayAvatarURL())
             .setColor("PURPLE")

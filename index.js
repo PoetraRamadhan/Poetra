@@ -1,13 +1,10 @@
 const Discord = require("discord.js");
+const { prefix, token } = require("./botSettings.json");
 const mongoose = require("mongoose");
-const { token, prefix } = require("./botSettings.json");
+const GuildPrefixes = require("./models/prefixSchema")
 
 const client = new Discord.Client({
     disableMentions: "everyone"
-})
-mongoose.connect("mongodb+srv://Poetra:PoetraDB@poetradb.fjne5.mongodb.net/Data", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
 })
 
 require("./util/eventHandler")(client);

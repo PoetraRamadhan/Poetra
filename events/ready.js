@@ -2,7 +2,7 @@ module.exports = (client) => {
     console.log(`${client.user.username} is online`)
 
     function StatusSystem() {
-        let statuses = ["*invite to invite me :D", "*help for commands", "Under Development"]
+        let statuses = ["Ping me for Prefix ^^", "help for commands", "Invite for invtite link"]
 
         let rstatus = Math.floor(Math.random() * statuses.length)
 

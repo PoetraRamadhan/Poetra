@@ -8,6 +8,7 @@ module.exports = {
     accessableby: "Members",
     aliases: [],
     category: "fun",
+    timeout: 5000,
     run: async (client, message, args) => {
         const embed = new Discord.MessageEmbed()
         got('https://www.reddit.com/r/memes/random/.json').then(response => {

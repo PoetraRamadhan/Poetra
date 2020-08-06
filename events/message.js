@@ -1,5 +1,7 @@
+const ms = require("ms");
 const mongoose = require("mongoose");
 const Guild = require("../models/guild");
+const Timeout = new Set()
 
 module.exports = async (client, message) => {
     const settings = await Guild.findOne({
@@ -44,6 +46,18 @@ module.exports = async (client, message) => {
     let command = client.commands.get(cmd);
     if (!command) command = client.commands.get(client.aliases.get(cmd));
     
-    if (command)
+    if (command) {
+        if(command.timeout) {
+            if(Timeout.has(`${message.author.id}${command.name}`)) {
+                message.reply(`Sorry, you're in cooldown. you can use this command in: ${ms(command.timeout)}`).then(m => m.delete({ timeout: 10000 }))
+            } else {
+                Timeout.add(`${message.author.id}${command.name}`)
+                setTimeout(() => {
+                    Timeout.delete(`${message.author.id}${command.name}`)
+                }, command.timeout);
+            }
+        }
         command.run(client, message, args);
+    }
+        
 };

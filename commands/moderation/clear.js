@@ -8,20 +8,24 @@ module.exports = {
     aliases: ["purge", "clean"],
     category: "moderation",
     run: async (client, message, args) => {
-        if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-            return message.reply("<:Fail:739301997575929976>|You do not have the permission to use this command.").then(m => m.delete(5000));
-        }
-    
-        if (isNaN(args[0]) || parseInt(args[0]) <= 0) {
-            return message.reply("<:Fail:739301997575929976>|Please input a number.");
-        }
-    
-        let deleteAmount;
-        if (parseInt(args[0]) >= 100) {
-            return message.reply("<:Fail:739301997575929976>|You can only delete up to 100 messages at a time")
-        } else {
-            deleteAmount = parseInt(args[0]);
-        }
-        message.channel.send(`<:Success:739301940705624135>|Successfully Cleared ${deleteAmount} Messages`).then(m => m.delete({ timeout: 20000 }))
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) {
+        return message.reply("Missing Permissions!").then(m => m.delete(5000));
+    }
+
+    if (isNaN(args[0]) || parseInt(args[0]) <= 0) {
+        return message.reply("This is not a number").then(m => m.delete(5000));
+    }
+
+    let deleteAmount;
+    if (parseInt(args[0]) > 100) {
+        deleteAmount = 100;
+    } else {
+        deleteAmount = parseInt(args[0]);
+    }
+
+    message.channel.bulkDelete(deleteAmount, true)
+    .catch(err => message.reply(`Something went wrong... ${err}`));
+
+    message.channel.send(`Deleted ${deleteAmount} Messages`).then(m => m.delete({ timeout: 5000}))
     }
 }

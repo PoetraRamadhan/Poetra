@@ -5,7 +5,7 @@ const Guild = require("../../models/guild");
 module.exports = {
     name: "help",
     description: "Sends the information of all commands",
-    usage: "*help/*help <CommandName>",
+    usage: "help/help <CommandName>",
     accessableby: "Members",
     aliases: [],
     category: "utilities",
@@ -44,6 +44,7 @@ module.exports = {
             .addField("🔧__Utilities__🔧", "`ping | help | invite`")
             .addField("⚙️__Configuration__⚙️", "`setprefix`")
             .addField("😂__Fun__😂", "`howgay | howcool | meme | pet | quiz | 8ball`")
+            .addField("🎶__Music__🎶", "`play | loop | skip | queue | np | stop | leave`")
             .setFooter(`My prefix is: ${prefix}`, client.user.displayAvatarURL())
             .setColor("PURPLE")
     

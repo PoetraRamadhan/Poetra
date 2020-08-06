@@ -4,7 +4,7 @@ const Guild = require("../../models/guild");
 module.exports = {
     name: "setprefix",
     description: "Sets a costum prefix for the guild",
-    usage: "*setprefix <Prefix>",
+    usage: "setprefix <Prefix>",
     accessableby: "Admins",
     aliases: ["set-prefix"],
     run: async (client, message, args) => {

@@ -4,7 +4,7 @@ const randompuppy = require("random-puppy");
 module.exports = {
     name: "pet",
     description: "Sends a pet image from Reddit",
-    usage: "*pet",
+    usage: "pet",
     accessableby: "Members",
     aliases: ["pets"],
     category: "fun",

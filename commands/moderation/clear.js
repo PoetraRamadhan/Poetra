@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "clear",
     description: "Clears out the message from 1 up to 100",
-    usage: "*clear <Amount>",
+    usage: "clear <Amount>",
     accessableby: "Admins",
     aliases: ["purge", "clean"],
     category: "moderation",

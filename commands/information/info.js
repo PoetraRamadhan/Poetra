@@ -5,7 +5,7 @@ let week = 0;
 module.exports = {
     name: "info",
     description: "Shows the bot information",
-    usage: "*info",
+    usage: "info",
     accessableby: "Members",
     aliases: ["botinfo"],
     category: "information",

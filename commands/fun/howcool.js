@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "howcool",
     description: "Sends you the persentage of howcool is a user",
-    usage: "*howcool [@User/ID]",
+    usage: "howcool [@User/ID]",
     accessableby: "Members",
     aliases: [],
     category: "fun",

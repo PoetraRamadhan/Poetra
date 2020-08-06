@@ -4,7 +4,7 @@ const { description } = require("./8ball");
 module.exports = {
     name: "quiz",
     description: "Sends out a random quiz",
-    usage: "*quiz",
+    usage: "quiz",
     accessableby: "Members",
     aliases: [],
     category: "fun",

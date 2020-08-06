@@ -1,4 +1,4 @@
-module.exports = async (client) => { 
+module.exports = (client) => { 
     console.log(`${client.user.username} is online`)
 
     function StatusSystem() {

@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "howgay",
     description: "Shows howgay the user/author is",
-    usage: "*howgay [@User/ID]",
+    usage: "howgay [@User/ID]",
     accessableby: "Members",
     aliases: [],
     category: "fun",

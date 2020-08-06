@@ -24,6 +24,12 @@ module.exports = async (client, message) => {
     });
     let prefix = settings.prefix;
 
+    if(message.mentions.users.size){
+		if(message.mentions.users.first().id == client.user.id){
+			return message.reply(`My Prefix Is: \`\`${prefix}\`\``)
+		}
+	}
+
     if(message.author.bot) return;
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;

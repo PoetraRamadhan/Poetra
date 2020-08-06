@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "ban",
     description: "Ban a member from the guild",
-    usage: "*ban <@User/ID> [reason]",
+    usage: "ban <@User/ID> [reason]",
     accessableby: "Admins",
     aliases: [],
     category: "moderation",

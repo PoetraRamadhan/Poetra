@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "avatar",
     description: "Sends the user avatar",
-    usage: "*avatar [@User/ID/Author]",
+    usage: "avatar [@User/ID/Author]",
     accessableby: "Members",
     aliases: [],
     category: "information",

@@ -11,7 +11,7 @@ const status = {
 module.exports = {
     name: "userinfo",
     description: "Sends the user's info",
-    usage: "*userinfo [@User/ID/Author]",
+    usage: "userinfo [@User/ID/Author]",
     accessableby: "Members",
     aliases: [],
     category: "information",

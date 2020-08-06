@@ -4,12 +4,12 @@ const settings = process.env.TOKEN;
 module.exports = {
     name: "eval",
     description: "Evaluate a code",
-    usage: "*eval <Code>",
+    usage: "eval <Code>",
     accessableby: "Creator",
     aliases: [],
     category: "utilities",
     run: async (client, message, args) => {
-        if(!message.author.id !== "728587451437940766") return message.channel.send("Only the creator of this bot can use this.")
+        if(message.author.id !== "728587451437940766") return message.channel.send("Only the creator of this bot can use this.")
         let code = args.slice(0).join(" ")
     
         try {

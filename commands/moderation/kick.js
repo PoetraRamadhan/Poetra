@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "kick",
     description: "Kicks a member from the guild",
-    usage: "*kick <@User/ID> [reason]",
+    usage: "kick <@User/ID> [reason]",
     accessableby: "Admins",
     aliases: [],
     category: "moderation",

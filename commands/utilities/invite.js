@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "invite",
     description: "Send an embed that will redirect you to invite the bot",
-    usage: "*invite",
+    usage: "invite",
     accessableby: "Members",
     aliases: [],
     category: "utilities",

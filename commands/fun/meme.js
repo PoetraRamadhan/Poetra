@@ -4,7 +4,7 @@ const got = require("got");
 module.exports = {
     name: "meme",
     description: "Sends a random meme from Reddit",
-    usage: "*meme",
+    usage: "meme",
     accessableby: "Members",
     aliases: [],
     category: "fun",

@@ -14,7 +14,7 @@ module.exports = {
         };
 
         mongoose.connect('mongodb+srv://Poetra:PoetraDB@poetradb.fjne5.mongodb.net/Data', dbOptions);
-        mongoose.set('useFindAndModify', false);
+        mongoose.set('useFindAndModify', true);
         mongoose.Promise = global.Promise;
 
         mongoose.connection.on('connected', () => {

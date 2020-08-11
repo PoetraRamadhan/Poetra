@@ -39,7 +39,7 @@ module.exports = {
             let helpEmbed = new Discord.MessageEmbed()
             .setAuthor(`${client.user.tag}`, client.user.displayAvatarURL())
             .setDescription(`For more information use the command \`${prefix}help <command>\`\nInvite me using the command \`${prefix}invite\``)
-            .addField("🛡️__Moderation__🛡️", "`ban | kick | unban | clear`")
+            .addField("🛡️__Moderation__🛡️", "`ban | kick | unban | clear | warn | warnings`")
             .addField("📜__Information__📜", "`info | serverinfo | userinfo | avatar`")
             .addField("🔧__Utilities__🔧", "`ping | help | invite`")
             .addField("⚙️__Configuration__⚙️", "`setprefix`")

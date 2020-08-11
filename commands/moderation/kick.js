@@ -9,25 +9,25 @@ module.exports = {
     category: "moderation",
     run: async (client, message, args) => {
         if(!message.member.hasPermission("KICK_MEMBERS")) {
-            return message.channel.send("<:Fail:739301997575929976>|You do not have the permission to use this command");
+            return message.channel.send("You do not have the permission to use this command");
         }
     
         let target = message.mentions.members.first() || message.guild.members.cache.get(args[0])
     
         if(!target) {
-            return message.channel.send("<:Fail:739301997575929976>|Coulnd't find User, Please provide a User or UserID");
+            return message.channel.send("Coulnd't find User, Please provide a User or UserID");
         }
     
         if(target.id === message.author.id) {
-            return message.channel.send("<:Fail:739301997575929976>|You cannot kick yourself.");
+            return message.channel.send("You cannot kick yourself.");
         }
     
         if(target.id === message.guild.owner.id) {
-            return message.channel.send("<:Fail:739301997575929976>|You cannot kick the guild owner.");
+            return message.channel.send("You cannot kick the guild owner.");
         }
     
         if(!target.kickable) {
-            return message.channel.send("<:Fail:739301997575929976>|Coulnd't kick this member. Maybe his/her role is higher than me?")
+            return message.channel.send("Coulnd't kick this member. Maybe his/her role is higher than me?")
         }
     
         let reason = args.slice(1).join(" ");
@@ -35,7 +35,7 @@ module.exports = {
     
         try {
             target.kick(reason);
-            message.channel.send(`<:Success:739301940705624135>|Successfully Kicked ${target.user.tag}`).then(m => m.delete({ timeout: 20000 }))
+            message.channel.send(`Successfully Kicked ${target.user.tag}`).then(m => m.delete({ timeout: 20000 }))
         } catch (err) {
             if(err) console.log(err);
         }

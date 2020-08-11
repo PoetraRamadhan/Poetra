@@ -1,7 +1,8 @@
+const Discord = require("discord.js");
 const ms = require("ms");
 const mongoose = require("mongoose");
 const Guild = require("../models/guild");
-const Timeout = new Set()
+const cooldowns = new Discord.Collection();
 
 module.exports = async (client, message) => {
     const settings = await Guild.findOne({
@@ -26,11 +27,11 @@ module.exports = async (client, message) => {
     });
     let prefix = settings.prefix;
 
-    if(message.mentions.users.size){
-		if(message.mentions.users.first().id == client.user.id){
-			return message.reply(`My Prefix Is: \`\`${prefix}\`\``)
-		}
-	}
+    if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) {
+        return message.channel.send(`My Prefix Is: \`${prefix}\``)
+    };
+
+    if(message.content.indexOf(prefix) !== 0) return;
 
     if(message.author.bot) return;
     if (!message.guild) return;
@@ -43,21 +44,26 @@ module.exports = async (client, message) => {
     
     if (cmd.length === 0) return;
     
-    let command = client.commands.get(cmd);
-    if (!command) command = client.commands.get(client.aliases.get(cmd));
-    
-    if (command) {
-        if(command.timeout) {
-            if(Timeout.has(`${message.author.id}${command.name}`)) {
-                message.reply(`Sorry, you're in cooldown. you can use this command in: ${ms(command.timeout)}`).then(m => m.delete({ timeout: 10000 }))
-            } else {
-                Timeout.add(`${message.author.id}${command.name}`)
-                setTimeout(() => {
-                    Timeout.delete(`${message.author.id}${command.name}`)
-                }, command.timeout);
-            }
+    let command = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
+    if (!command) return
+
+    if(!cooldowns.has(command.name)) {
+        cooldowns.set(command.name, new Discord.Collection())
+    };
+
+    const now = Date.now();
+    const timestamps = cooldowns.get(command.name);
+    const cooldownAmount = (command.cooldown || 0) * 1000;
+
+    if(timestamps.has(message.author.id)) {
+        const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+        if (now < expirationTime) {
+            const timeLeft = (expirationTime - now) / 1000;
+            return message.channel.send(`This command is on a cooldown, please try again in **${timeLeft.toFixed(1)} Seconds**`)
         }
-        command.run(client, message, args);
-    }
-        
+    } else if(command) command.run(client, message, args)
+
+    timestamps.set(message.author.id, now);
+setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 };

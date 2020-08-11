@@ -7,7 +7,7 @@ module.exports = {
     usage: "neko",
     accessableby: "Members",
     aliases: [],
-    category: "fun",
+    category: "images",
     run: async (client, message, args) => {
         let data = await random.getNeko();
         message.channel.send(data);

@@ -43,7 +43,9 @@ module.exports = {
             .addField("📜__Information__📜", "`info | serverinfo | userinfo | avatar`")
             .addField("🔧__Utilities__🔧", "`ping | help | invite`")
             .addField("⚙️__Configuration__⚙️", "`setprefix`")
-            .addField("😂__Fun__😂", "`howgay | howcool | meme | pet | quiz | 8ball | neko | kpop | joke | advice`")
+            .addField("😂__Fun__😂", "`howgay | howcool | meme | pet | quiz | 8ball | kpop | joke | advice`")
+            .addField("🖼️__Images__🖼️", "`neko | mobile | desktop`")
+            .addField("🔞__NSFW__🔞", "`hentai | lewdneko | lewdbomb | maid`")
             .setFooter(`My prefix is: ${prefix}`, client.user.displayAvatarURL())
             .setColor("PURPLE")
     

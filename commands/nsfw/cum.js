@@ -2,17 +2,17 @@ const { MessageEmbed } = require("discord.js");
 const akaneko = require("akaneko");
 
 module.exports = {
-    name: "maid",
-    description: "Sends lewd maid images. i wish i have a maid",
-    usage: "maid",
+    name: "cum",
+    description: "Sends a random imageURL from Discord for the tag: cum",
+    usage: "cum",
     accessableby: "Members",
     aliases: [],
     category: "nsfw",
     run: async (client, message, args) => {
         if(!message.channel.nsfw) return message.channel.send("Please use this command in a NSFW channel");
         const akanekoSan = new MessageEmbed()
-        .setColor("RANDOM")
-        .setImage(akaneko.nsfw.maid())
+        .setImage(akaneko.nsfw.cum())
+        
         return message.channel.send(akanekoSan)
     }
 }

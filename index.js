@@ -11,6 +11,7 @@ const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.queue = new Map();
+client.vote = new Map();
 client.mongoose = require("./utils/mongoose")
 client.categories = fs.readdirSync("./commands/");
 ["command"].forEach((handler) => {

@@ -19,7 +19,8 @@
     "random-puppy": "^1.1.0",
     "simple-youtube-api": "^5.2.1",
     "something-random-on-discord": "0.0.2",
-    "ytdl-core": "^3.2.0"
+    "ytdl-core": "^3.2.0",
+    "ytdl-core-discord": "git+https://github.com/CTK-WARRIOR/ytdl-core-discord.git"
   },
   "devDependencies": {},
   "scripts": {

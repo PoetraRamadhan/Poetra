@@ -46,7 +46,7 @@ module.exports = {
             .addField("😂__Fun__😂", "`howgay | howcool | meme | pet | quiz | 8ball | kpop | joke | advice`")
             .addField("🖼️__Images__🖼️", "`neko | mobile | desktop`")
             .addField("🔞__NSFW__🔞", "`hentai | lewdneko | lewdbomb | maid | ass | cum | panties`")
-            .addField("🎶__Music__🎶", "`UNDER DEVELOPMENT`")
+            .addField("🎶__Music__🎶", "`play | queue | nowplaying | skip | skipto | loop | pause | resume | volume | remove | stop`")
             .setFooter(`My prefix is: ${prefix}`, client.user.displayAvatarURL())
             .setColor("PURPLE")
     

@@ -16,7 +16,7 @@ module.exports = {
         if(!channel) return message.channel.send("You are not in a voice channel!");
 
         const serverQueue = message.client.queue.get(message.guild.id);
-        if(!serverQueue) return message.channel.send("There's nothing currently playing right now");
+        if(!serverQueue) return message.channel.send("There's nothing playing right now");
 
         serverQueue.songs = [];
         serverQueue.connection.dispatcher.end();

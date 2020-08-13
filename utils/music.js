@@ -9,14 +9,12 @@ module.exports = {
         .setColor(COLOURS)
 
         if(!song) {
-            setTimeout(() => {
                 queue.channel.leave();
                 message.client.queue.delete(message.guild.id);
                 embed.setAuthor("Thank you for tuning with me 🎶")
                 return queue.textChannel
                 .send(embed)
                 .catch(console.error);
-            }, 30000);
         }
 
         try {

@@ -10,7 +10,6 @@
     "dotenv": "^8.2.0",
     "ffmpeg": "0.0.4",
     "fs": "^0.0.1-security",
-    "genius-lyrics": "^3.0.0",
     "got": "^11.5.1",
     "moment": "^2.27.0",
     "mongoose": "^5.9.20",

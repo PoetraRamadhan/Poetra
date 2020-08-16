@@ -1,4 +1,5 @@
 const Warns = require("../../models/warns");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "warn",
@@ -8,6 +9,9 @@ module.exports = {
     aliases: [],
     category: "moderation",
     run: async (client, message, args) => {
+        let embed = new MessageEmbed()
+        .setColor("RANDOM")
+
         if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You do not have the permission to use this command!")
         let users = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
         if(!users) return message.channel.send("Coulnd't find User, Please provide a User or UserID.");
@@ -29,14 +33,18 @@ module.exports = {
                     }]
                 })
                 newWarns.save()
-                message.channel.send(`**${users.user.tag}** has been warned with the reason of **${args.slice(1).join(" ")}**`)
+                embed.setAuthor(`${users.user.tag} Has been warned`)
+                embed.setDescription(`**Reason:** ${args.slice(1).join(" ")}`)
+                message.channel.send(embed)
             } else {
                 data.warns.unshift({
                     admin: message.author.id,
                     reason: args.slice(1).join(" "),
                 })
                 data.save()
-                message.channel.send(`**${users.user.tag}** has been warned with the reason of **${args.slice(1).join(" ")}**, Total Warns: **${data.warns.length}** Warnings`)
+                embed.setAuthor(`${users.user.tag} Has been warned`)
+                embed.setDescription(`**Reason:** ${args.slice(1).join(" ")}\n**Total:** ${data.warns.length} Warning(s)`)
+                message.channel.send(embed)
             }
         })
     }

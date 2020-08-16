@@ -7,7 +7,7 @@ module.exports = {
     usage: "kpop",
     accessableby: "Members",
     aliases: [],
-    category: "fun",
+    category: "images",
     run: async (client, message, args) => {
         let data = await random.getKpop();
         message.channel.send(data)
